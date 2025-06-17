@@ -1,120 +1,84 @@
 
+# DevCrypt Installation Guide
 
-# Installation Guide
+This guide explains how to install the `devcrypt` package hosted on a custom Netlify server.
 
-## Prerequisites
-- Python 3.7 or higher
-- pip package manager
+---
 
-## Install from Custom PyPI Server (Recommended)
-```bash
-pip install -i https://crypthera.free.nf/simple/ devcrypt
+## ✅ Method 1: Install directly from hosted `.whl` file
+
+If you want to install the package directly using the `.whl` file:
+
+```
+pip install https://devcrypts.netlify.app/simple/devcrypt/devcrypt-1.0.0-py3-none-any.whl
 ```
 
-## Alternative Installation Methods
+> This URL must point directly to the `.whl` file.
 
-### Install from PyPI (if available)
-```bash
-pip install devcrypt
+---
+
+## ⚠️ Method 2: Using a custom index URL (won't work without correct directory setup)
+
+Although normally you'd use:
+
+```
+pip install --index-url https://devcrypts.netlify.app/simple/ devcrypt
 ```
 
-### Install from Source
+This won't work unless your `/simple/` directory is structured and rendered as a plaintext package index (PEP 503). HTML rendering will break pip's expectations.
 
-**Clone the repository:**
-```bash
-git clone https://github.com/yourusername/devcrypt.git
-cd devcrypt
+### Structure needed:
+Your `https://devcrypts.netlify.app/simple/devcrypt/` must serve an HTML page like this:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head><title>Links for devcrypt</title></head>
+  <body>
+    <h1>Links for devcrypt</h1>
+    <a href="devcrypt-1.0.0-py3-none-any.whl">devcrypt-1.0.0-py3-none-any.whl</a><br>
+    <a href="devcrypt-1.0.0.tar.gz">devcrypt-1.0.0.tar.gz</a><br>
+  </body>
+</html>
 ```
 
-**Install dependencies:**
-```bash
-pip install -r requirements.txt
+---
+
+## 🛠 If you're installing locally (development mode)
+
+```
+pip uninstall devcrypt
+python -m build
+pip install dist/devcrypt-1.0.0-py3-none-any.whl
 ```
 
-**Install the package:**
-```bash
-pip install -e .
+Make sure `build` is installed:
+
+```
+pip install build
 ```
 
-## Verify Installation
+---
+
+## 📦 Directory structure on Netlify
+
+```
+/simple/
+  /devcrypt/
+    index.html  <-- Proper HTML with .whl and .tar.gz links
+    devcrypt-1.0.0-py3-none-any.whl
+    devcrypt-1.0.0.tar.gz
+```
+
+---
+
+## 🧪 Test if installation works
+
 ```python
 import devcrypt
 print(devcrypt.__version__)
 ```
 
-## Dependencies
-DevCrypt automatically installs these dependencies:
+---
 
-- `cryptography>=3.4.8` - Core encryption algorithms
-- `pycryptodome>=3.15.0` - Additional crypto functions
-- `click>=8.0.0` - Command line interface
-- `rich>=12.0.0` - Beautiful terminal output
-
-## Optional Dependencies
-For enhanced performance and additional features:
-
-```bash
-# For faster operations
-pip install -i https://crypthera.free.nf/simple/ devcrypt[performance]
-
-# For development
-pip install -i https://crypthera.free.nf/simple/ devcrypt[dev]
-
-# For all features
-pip install -i https://crypthera.free.nf/simple/ devcrypt[all]
-```
-
-## Platform-Specific Notes
-
-### Windows
-- No additional setup required
-- Windows Defender may flag encrypted files (normal behavior)
-
-### macOS
-- Requires Xcode Command Line Tools for compilation
-- Install with: `xcode-select --install`
-
-### Linux
-- Requires build essentials
-- Ubuntu/Debian: `sudo apt-get install build-essential`
-- CentOS/RHEL: `sudo yum install gcc`
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue:** `ImportError: No module named 'devcrypt'`  
-**Solution:** Ensure you've activated the correct virtual environment
-
-**Issue:** `Permission denied during installation`  
-**Solution:** Use `pip install -i https://crypthera.free.nf/simple/ --user devcrypt` or create a virtual environment
-
-**Issue:** Compilation errors on Linux  
-**Solution:** Install development headers: `sudo apt-get install python3-dev`
-
-## Virtual Environment (Recommended)
-```bash
-# Create virtual environment
-python -m venv devcrypt-env
-
-# Activate (Linux/macOS)
-source devcrypt-env/bin/activate
-
-# Activate (Windows)
-devcrypt-env\Scripts\activate
-
-# Install DevCrypt
-pip install -i https://crypthera.free.nf/simple/ devcrypt
-```
-
-## Upgrading
-```bash
-pip install -i https://crypthera.free.nf/simple/ --upgrade devcrypt
-```
-
-## Uninstalling
-```bash
-pip uninstall devcrypt
-```
-© 2025 Atharva Panchal and Mohit Chadhuari.  
-Licensed under the MIT License with Attribution. See [LICENSE](../LICENSE) for more details
+© 2025 Atharva Panchal, Mohit Chaudhari
