@@ -54,12 +54,21 @@ pip install https://devcrypts.netlify.app/simple/devcrypt/devcrypt-1.0.0-py3-non
 ### 🔐 Basic Text Encryption
 
 ```python
-from devcrypt import DevCrypt
+from devcrypt import encrypt
 
-dc = DevCrypt()
-message = "Confidential data"
-encrypted = dc.encrypt(message, method="fernet")
-print(f"Encrypted: {encrypted}")
+plaintext = "This is private"
+password = "myPassword123"
+
+encrypted_data, token = encrypt(plaintext, password)
+
+with open("encrypted.txt", "w") as f:
+    f.write(encrypted_data)
+
+with open("token.txt", "w") as f:
+    f.write(token)
+
+print("Encrypted data and token saved.")
+
 ```
 
 ### 📁 File Encryption
