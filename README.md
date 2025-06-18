@@ -115,9 +115,6 @@ password = "mySecurePassword"
 server_token = input("🔐 Enter server token used during encryption: ")
 decrypt_file("encrypted.txt", "decrypted.txt", password, server_token)
 ```
-
-### 🇮🇳 Devanagari Script Encoding
-
 ```python
 ```
 
@@ -159,12 +156,12 @@ decrypt_file("encrypted.txt", "decrypted.txt", password, server_token)
 - Most developers roll their own crypto (dangerous!)
 
 ---
-# Enter DevCrypt - built for 2024's threat landscape:*
+# Enter DevCrypt - built for 2024's threat landscape:
 
-✅ *Argon2 hashing* - 100x more expensive for attackers
-✅ *Memory-hard algorithm* - GPU farms become useless
-✅ *Unicode optimization* - Global applications supported
-✅ *2-function API* - Impossible to implement wrong
+- ✅ *Argon2 hashing* - 100x more expensive for attackers
+- ✅ *Memory-hard algorithm* - GPU farms become useless
+- ✅ *Unicode optimization* - Global applications supported
+- ✅ *2-function API* - Impossible to implement wrong
 
 ---
 ## 🤝 Contributing
