@@ -63,19 +63,59 @@ print(f"Encrypted: {encrypted}")
 
 ```python
 # Encrypt a file
-dc.encrypt_file("document.pdf", "document_encrypted.pdf")
+from devcrypt import DevCrypt
+
+def encrypt_file(input_file_path, output_file_path, user_password, server_token=None):
+    dc = DevCrypt()
+
+    if server_token is None:
+        server_token = dc.generate_server_token()
+
+    combined_secret = dc.combine_factors(user_password, server_token)
+
+    with open(input_file_path, 'rb') as f:
+        file_data = f.read()
+
+    encrypted_data = dc.encrypt(file_data.decode('latin1'), combined_secret)
+
+    with open(output_file_path, 'w') as f:
+        f.write(encrypted_data)
+
+    print(f"[✔] File encrypted: {output_file_path}")
+    print(f"[🔐] Server token (save this!): {server_token}")
+    return server_token
+
+# Example:
+password = "mySecurePassword"
+token = encrypt_file("original.txt", "encrypted.txt", password)
 
 # Decrypt a file
-dc.decrypt_file("document_encrypted.pdf", "document_restored.pdf")
+from devcrypt import DevCrypt
+
+def decrypt_file(encrypted_file_path, output_file_path, user_password, server_token):
+    dc = DevCrypt()
+    combined_secret = dc.combine_factors(user_password, server_token)
+
+    with open(encrypted_file_path, 'r') as f:
+        encrypted_data = f.read()
+
+    decrypted_text = dc.decrypt(encrypted_data, combined_secret)
+    decrypted_data = decrypted_text.encode('latin1')
+
+    with open(output_file_path, 'wb') as f:
+        f.write(decrypted_data)
+
+    print(f"[✔] File decrypted: {output_file_path}")
+
+# Example:
+password = "mySecurePassword"
+server_token = input("🔐 Enter server token used during encryption: ")
+decrypt_file("encrypted.txt", "decrypted.txt", password, server_token)
 ```
 
 ### 🇮🇳 Devanagari Script Encoding
 
 ```python
-# Encode using Devanagari characters
-text = "Secret message"
-encoded = dc.devanagari_encode(text)
-print(f"Encoded: {encoded}")  # Output in Devanagari script
 ```
 
 ---
