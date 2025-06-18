@@ -10,9 +10,12 @@ Perfect for developers who need robust security with cultural authenticity.
 
 ## ✨ Key Features
 
-- ✅ **Multi-Algorithm Support**: AES, RSA, Fernet, and custom algorithms  
-- 🇮🇳 **Devanagari Encoding**: Unique script-based encryption for cultural projects  
-- 📁 **File Encryption**: Secure any file type with ease  
+- 🔐 **AES-256-CBC Encryption**: Military-grade symmetric encryption for maximum confidentiality  
+- 🧠 **Argon2id Key Derivation**: Memory-hard KDF with 64-byte random salt to resist brute-force attacks  
+- 🛡️ **HMAC-SHA256 Authentication**: Ensures data integrity and detects tampering  
+- 🔁 **Unique Salt & IV Per Encryption**: Prevents rainbow table and replay attacks  
+- 🧩 **Dual-Layer Security**: Combines user password with a server-generated token for stronger protection  
+- 🏗️ **Extensible Architecture**: Clean, modular design that’s easy to integrate into any Python project  
 - ⚡ **Performance Optimized**: Fast encryption/decryption for large data  
 - 🧩 **Simple API**: Intuitive interface for all skill levels  
 - 🖥️ **Cross-Platform**: Works on Windows, macOS, and Linux  
@@ -41,7 +44,7 @@ decoded = dc.devanagari_decode(encoded)
 ## 📦 Installation
 
 ```bash
-pip install --index-url https://devcrypts.netlify.app/simple/ devcrypt
+pip install https://devcrypts.netlify.app/simple/devcrypt/devcrypt-1.0.0-py3-none-any.whl
 ```
 
 ---
@@ -150,7 +153,20 @@ decrypt_file("encrypted.txt", "decrypted.txt", password, server_token)
 | Documentation        | ✅ Comprehensive | Minimal |
 
 ---
+# The wake-up call:
+- bcrypt (1999): Vulnerable to modern GPU attacks
+- Fernet: Uses basic PBKDF2 from 2013
+- Most developers roll their own crypto (dangerous!)
 
+---
+# Enter DevCrypt - built for 2024's threat landscape:*
+
+✅ *Argon2 hashing* - 100x more expensive for attackers
+✅ *Memory-hard algorithm* - GPU farms become useless
+✅ *Unicode optimization* - Global applications supported
+✅ *2-function API* - Impossible to implement wrong
+
+---
 ## 🤝 Contributing
 
 We welcome contributions!  
