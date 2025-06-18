@@ -25,18 +25,21 @@ Perfect for developers who need robust security with cultural authenticity.
 ## 🚀 Quick Start
 
 ```python
-from devcrypt import DevCrypt
+from devcrypt import encrypt
 
-# Initialize encryptor
-dc = DevCrypt()
+plaintext = "This is private"
+password = "myPassword123"
 
-# Basic encryption
-encrypted = dc.encrypt("Hello World!", method="aes")
-decrypted = dc.decrypt(encrypted, method="aes")
+encrypted_data, token = encrypt(plaintext, password)
 
-# Devanagari encoding
-encoded = dc.devanagari_encode("Secret Message")
-decoded = dc.devanagari_decode(encoded)
+with open("encrypted.txt", "w") as f:
+    f.write(encrypted_data)
+
+with open("token.txt", "w") as f:
+    f.write(token)
+
+print("Encrypted data and token saved.")
+
 ```
 
 ---
