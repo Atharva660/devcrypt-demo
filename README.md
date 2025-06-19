@@ -381,10 +381,9 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ## 🔗 Useful Links
 
-- 📖 Documentation: [Full Docs](#)
-- 🔍 Examples: [Code Examples](#)
-- ❓ Issues: [GitHub Issues](#)
-- 💬 Discussions: [GitHub Discussions](#)
+- 📖 Documentation: [Full Documentation](https://github.com/Atharva660/devcrypt_demo/blob/main/README.md)
+- 🔍 Examples: [Usage Examples](https://github.com/Atharva660/devcrypt_demo/tree/main/examples)
+- ❓ Issues: [GitHub Issues](https://github.com/Atharva660/devcrypt_demo/issues)
 
 ---
 
